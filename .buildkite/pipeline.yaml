@@ -1,0 +1,11 @@
+steps:
+  - label: ":docker: docker build"
+    key: "build"
+    env:
+      QUAY_REPO: docker.io/hnadimint/buildkite-actions
+      IMAGE_TAG: ${BUILDKITE_BUILD_NUMBER}-${BUILDKITE_COMMIT}
+    commands: |
+      #! /bin/bash
+      echo ---Build Docker Image
+      docker build . -t loacl-image/py-app:$$IMAGE_TAG"
+
